@@ -1,126 +1,128 @@
-import { Rocket, Search, Zap } from "lucide-react";
+"use client";
 
-const features = [
-  {
-    title: "Overlooked Tools",
-    description:
-      "Uncover niche AI apps and workflows before they hit the mainstream—curated for builders who look past the hype.",
-    icon: Search,
-  },
-  {
-    title: "Maximize Output",
-    description:
-      "Prompt patterns, hidden settings, and power-user tricks that squeeze more quality from the tools you already use.",
-    icon: Zap,
-  },
-  {
-    title: "Future Tech",
-    description:
-      "Early signals on models, agents, and interfaces reshaping how work gets done—so you can adapt ahead of the curve.",
-    icon: Rocket,
-  },
-] as const;
+import { useState } from "react";
+import { Search, Zap, Rocket, Mail, ArrowRight, Check, Menu, X } from "lucide-react";
 
 export default function Home() {
-  return (
-    <div className="relative min-h-full overflow-hidden bg-[#030303] text-zinc-100">
-      <div
-        className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_80%_50%_at_50%_-20%,rgba(120,80,255,0.35),transparent)]"
-        aria-hidden
-      />
-      <div
-        className="pointer-events-none absolute -right-32 top-1/3 h-96 w-96 rounded-full bg-violet-600/20 blur-3xl"
-        aria-hidden
-      />
-      <div
-        className="pointer-events-none absolute -left-24 bottom-0 h-80 w-80 rounded-full bg-blue-600/15 blur-3xl"
-        aria-hidden
-      />
+  const [email, setEmail] = useState("");
+  const [submitted, setSubmitted] = useState(false);
+  const [menuOpen, setMenuOpen] = useState(false);
 
-      <header className="relative z-10 mx-auto flex w-full max-w-6xl items-center justify-between px-6 py-8 sm:px-10">
-        <div className="flex items-center gap-2">
-          <span className="flex h-9 w-9 items-center justify-center rounded-lg bg-gradient-to-br from-violet-500 to-blue-600 text-sm font-bold text-white shadow-lg shadow-violet-500/25">
-            AI
-          </span>
-          <span className="text-lg font-semibold tracking-tight">
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (email.trim()) {
+      setSubmitted(true);
+      setEmail("");
+    }
+  };
+
+  return (
+    <main className="min-h-screen bg-gradient-to-b from-slate-950 via-slate-900 to-black text-white">
+      <nav className="fixed top-0 left-0 right-0 z-50 border-b border-slate-800/50 bg-slate-950/80 backdrop-blur-md">
+        <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-4">
+          <span className="text-xl font-bold bg-gradient-to-r from-purple-400 to-blue-400 bg-clip-text text-transparent">
             AI Underground
           </span>
+          <div className="hidden items-center gap-6 md:flex">
+            <a href="#" className="text-sm text-slate-300 hover:text-white">Home</a>
+            <a href="/tools" className="text-sm text-slate-300 hover:text-white">Tools</a>
+            <a href="/guides" className="text-sm text-slate-300 hover:text-white">Guides</a>
+            <a href="/news" className="text-sm text-slate-300 hover:text-white">News</a>
+          </div>
+          <button onClick={() => setMenuOpen(!menuOpen)} className="md:hidden p-2 text-slate-300">
+            {menuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
+          </button>
         </div>
-        <p className="hidden text-sm text-zinc-400 sm:block">
-          Newsletter &amp; discovery
-        </p>
-      </header>
+        {menuOpen && (
+          <div className="border-t border-slate-800 px-4 py-4 md:hidden">
+            <div className="flex flex-col gap-4">
+              <a href="#" onClick={() => setMenuOpen(false)} className="text-slate-300 hover:text-white">Home</a>
+              <a href="#tools" onClick={() => setMenuOpen(false)} className="text-slate-300 hover:text-white">Tools</a>
+              <a href="#guides" onClick={() => setMenuOpen(false)} className="text-slate-300 hover:text-white">Guides</a>
+              <a href="#news" onClick={() => setMenuOpen(false)} className="text-slate-300 hover:text-white">News</a>
+            </div>
+          </div>
+        )}
+      </nav>
 
-      <main className="relative z-10 mx-auto w-full max-w-6xl px-6 pb-24 pt-4 sm:px-10 sm:pt-12">
-        <section className="mx-auto max-w-3xl text-center">
-          <p className="mb-4 inline-flex items-center rounded-full border border-violet-500/30 bg-violet-500/10 px-4 py-1.5 text-xs font-medium uppercase tracking-wider text-violet-200">
-            Weekly · No fluff · Edge-first
-          </p>
-          <h1 className="text-balance text-4xl font-bold leading-tight tracking-tight sm:text-5xl md:text-6xl">
-            Discover the AI Tools{" "}
-            <span className="bg-gradient-to-r from-violet-400 via-blue-400 to-cyan-400 bg-clip-text text-transparent">
-              Nobody Talks About
-            </span>
+      <section className="flex flex-col items-center justify-center px-4 pt-32 pb-20 text-center sm:pt-40 sm:pb-32">
+        <div className="max-w-4xl space-y-6">
+          <div className="inline-flex rounded-full border border-purple-500/30 bg-purple-500/10 px-4 py-1.5 text-sm text-purple-300">
+            Weekly &bull; No Fluff &bull; Edge-First
+          </div>
+          <h1 className="text-4xl font-bold tracking-tight sm:text-6xl lg:text-7xl bg-gradient-to-r from-purple-400 via-blue-400 to-cyan-400 bg-clip-text text-transparent">
+            Discover the AI Tools Nobody Talks About
           </h1>
-          <p className="mx-auto mt-6 max-w-2xl text-pretty text-lg leading-relaxed text-zinc-400 sm:text-xl">
-            Weekly deep-dives into hidden features, prompt hacks, and emerging
-            tech that gives you an edge.
+          <p className="mx-auto max-w-2xl text-lg text-slate-400">
+            Weekly deep-dives into hidden features, prompt hacks, and emerging tech that gives you an edge.
           </p>
 
-          <form
-            className="mx-auto mt-10 flex w-full max-w-xl flex-col gap-3 sm:flex-row sm:items-stretch"
-            action="#"
+          {!submitted ? (
+            <form
+            action="https://formspree.io/f/xojgwwrl"
+            method="POST"
+            className="mx-auto flex max-w-md flex-col gap-3 sm:flex-row"
           >
-            <label htmlFor="email" className="sr-only">
-              Email address
-            </label>
-            <input
-              id="email"
-              name="email"
-              type="email"
-              required
-              autoComplete="email"
-              placeholder="you@company.com"
-              className="min-h-14 flex-1 rounded-xl border border-zinc-700/80 bg-zinc-900/80 px-5 text-base text-zinc-100 placeholder:text-zinc-500 shadow-inner transition-all duration-300 focus:border-violet-500/60 focus:outline-none focus:ring-2 focus:ring-violet-500/30"
-            />
+            <div className="relative flex-1">
+              <Mail className="absolute left-3 top-1/2 h-5 w-5 -translate-y-1/2 text-slate-500" />
+              <input
+                type="email"
+                name="email"
+                placeholder="Enter your email"
+                required
+                className="h-12 w-full rounded-lg bg-slate-800/50 border border-slate-700 pl-10 pr-4 text-white placeholder:text-slate-500 focus:border-purple-500 focus:outline-none"
+              />
+            </div>
             <button
               type="submit"
-              className="min-h-14 shrink-0 rounded-xl bg-gradient-to-r from-violet-600 to-blue-600 px-6 text-base font-semibold text-white shadow-lg shadow-violet-600/30 transition-all duration-300 hover:-translate-y-0.5 hover:from-violet-500 hover:to-blue-500 hover:shadow-violet-500/40 active:translate-y-0 sm:px-8"
+              className="flex h-12 items-center justify-center gap-2 rounded-lg bg-gradient-to-r from-purple-600 to-blue-600 px-6 font-medium text-white hover:from-purple-500 hover:to-blue-500"
             >
               Join 5,000+ Curious Minds
+              <ArrowRight className="h-4 w-4" />
             </button>
           </form>
-          <p className="mt-4 text-sm text-zinc-500">
-            Free forever. Unsubscribe anytime.
-          </p>
-        </section>
+          ) : (
+            <div className="mx-auto flex max-w-md items-center justify-center gap-3 rounded-lg border border-green-500/30 bg-green-500/10 px-6 py-4 text-green-400">
+              <Check className="h-5 w-5" />
+              <span>Thanks for subscribing! Check your inbox.</span>
+            </div>
+          )}
+          <p className="text-sm text-slate-500">No spam. Unsubscribe anytime.</p>
+        </div>
+      </section>
 
-        <section className="mt-24 sm:mt-32">
-          <h2 className="text-center text-sm font-semibold uppercase tracking-widest text-zinc-500">
-            What you get
-          </h2>
-          <ul className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-            {features.map(({ title, description, icon: Icon }) => (
-              <li
-                key={title}
-                className="group rounded-2xl border border-zinc-800/80 bg-zinc-950/60 p-8 backdrop-blur-sm transition-all duration-300 hover:-translate-y-1 hover:border-violet-500/40 hover:bg-zinc-900/80 hover:shadow-xl hover:shadow-violet-900/20"
-              >
-                <div className="mb-5 inline-flex rounded-xl bg-gradient-to-br from-violet-500/20 to-blue-500/20 p-3 text-violet-300 ring-1 ring-violet-500/30 transition-transform duration-300 group-hover:scale-110 group-hover:text-violet-200">
-                  <Icon className="h-6 w-6" strokeWidth={1.75} aria-hidden />
-                </div>
-                <h3 className="text-xl font-semibold text-zinc-50">{title}</h3>
-                <p className="mt-3 text-sm leading-relaxed text-zinc-400 transition-colors duration-300 group-hover:text-zinc-300">
-                  {description}
-                </p>
-              </li>
-            ))}
-          </ul>
-        </section>
-      </main>
+      <section id="tools" className="px-4 py-16 sm:py-24">
+        <div className="mx-auto max-w-6xl">
+          <h2 className="mb-12 text-center text-3xl font-bold sm:text-4xl">What You Get</h2>
+          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+            <div className="rounded-2xl border border-slate-800 bg-slate-900/50 p-8 hover:border-purple-500/50 transition-all">
+              <div className="mb-4 inline-flex rounded-lg bg-purple-500/10 p-3 text-purple-400">
+                <Search className="h-6 w-6" />
+              </div>
+              <h3 className="mb-2 text-xl font-semibold">Overlooked Tools</h3>
+              <p className="text-slate-400">Hidden gems and under-the-radar AI tools that deliver outsized results.</p>
+            </div>
+            <div className="rounded-2xl border border-slate-800 bg-slate-900/50 p-8 hover:border-blue-500/50 transition-all">
+              <div className="mb-4 inline-flex rounded-lg bg-blue-500/10 p-3 text-blue-400">
+                <Zap className="h-6 w-6" />
+              </div>
+              <h3 className="mb-2 text-xl font-semibold">Maximize Output</h3>
+              <p className="text-slate-400">Advanced prompting techniques and workflow automations to 10x your results.</p>
+            </div>
+            <div className="rounded-2xl border border-slate-800 bg-slate-900/50 p-8 hover:border-cyan-500/50 transition-all">
+              <div className="mb-4 inline-flex rounded-lg bg-cyan-500/10 p-3 text-cyan-400">
+                <Rocket className="h-6 w-6" />
+              </div>
+              <h3 className="mb-2 text-xl font-semibold">Future Tech</h3>
+              <p className="text-slate-400">Early signals on what is next in AI. Be first to know about breakthroughs.</p>
+            </div>
+          </div>
+        </div>
+      </section>
 
-      <footer className="relative z-10 border-t border-zinc-800/80 py-8 text-center text-sm text-zinc-600">
-        © {new Date().getFullYear()} AI Underground. Built for the curious.
+      <footer className="border-t border-slate-800 px-4 py-8 text-center text-sm text-slate-500">
+        &copy; 2026 AI Underground. Built for the curious.
       </footer>
-    </div>
+    </main>
   );
 }
