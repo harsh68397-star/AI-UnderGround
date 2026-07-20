@@ -37,9 +37,9 @@ export default function Home() {
           <div className="border-t border-slate-800 px-4 py-4 md:hidden">
             <div className="flex flex-col gap-4">
               <a href="#" onClick={() => setMenuOpen(false)} className="text-slate-300 hover:text-white">Home</a>
-              <a href="#tools" onClick={() => setMenuOpen(false)} className="text-slate-300 hover:text-white">Tools</a>
-              <a href="#guides" onClick={() => setMenuOpen(false)} className="text-slate-300 hover:text-white">Guides</a>
-              <a href="#news" onClick={() => setMenuOpen(false)} className="text-slate-300 hover:text-white">News</a>
+              <a href="/tools" onClick={() => setMenuOpen(false)} className="text-slate-300 hover:text-white">Tools</a>
+              <a href="/guides" onClick={() => setMenuOpen(false)} className="text-slate-300 hover:text-white">Guides</a>
+              <a href="/news" onClick={() => setMenuOpen(false)} className="text-slate-300 hover:text-white">News</a>
             </div>
           </div>
         )}
