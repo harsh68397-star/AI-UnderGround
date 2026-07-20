@@ -1,36 +1,58 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# AI Underground
 
-## Getting Started
+> A curated discovery platform for overlooked AI tools, deep-dive guides, and real tech news.
 
-First, run the development server:
+**Live Site:** [https://ai-under-ground.vercel.app](https://ai-under-ground.vercel.app)
+
+---
+
+## What It Is
+
+AI Underground surfaces the AI tools, techniques, and stories that fly under the mainstream radar. No hype cycles. No rehashed press releases. Just signal.
+
+- **Tools Directory** — Curated AI tools with "Why It's Overlooked" context and direct links
+- **Guides** — Battle-tested workflows, hidden features, and prompt chains
+- **News** — Real AI tech news with original source links
+
+---
+
+## Built With
+
+| Layer | Tech |
+|-------|------|
+| Framework | [Next.js 14](https://nextjs.org/) (App Router) |
+| Styling | [Tailwind CSS](https://tailwindcss.com/) |
+| Icons | [Lucide React](https://lucide.dev/) |
+| Email Capture | [Formspree](https://formspree.io/) |
+| Hosting | [Vercel](https://vercel.com/) |
+| AI Coding | [Cursor](https://cursor.com/) + Claude |
+
+**Total cost to build and deploy:** $0
+
+---
+
+## Features
+
+- Dark-themed, responsive landing page
+- Filterable tools directory (Productivity, Research, Dev, Creative)
+- Full guide articles with dedicated pages
+- News feed with featured stories, breaking badges, and source attribution
+- Working email newsletter capture
+- Mobile hamburger navigation
+
+---
+
+## Local Development
 
 ```bash
+# Clone the repo
+git clone https://github.com/yourusername/ai-underground.git
+cd ai-underground
+
+# Install dependencies
+npm install
+
+# Run dev server
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
-
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+# Open http://localhost:3000
